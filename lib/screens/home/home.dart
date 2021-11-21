@@ -1,3 +1,4 @@
+import 'package:buscavidedoyoutubecombloc/delegates/data_search.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,13 +9,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Container(child: Image.asset("assets/image/youtubr.png")),
+        title: Image.asset("assets/image/youtubr.png"),
         actions: [
-          Align(
+          const Align(
             child: Text("0"),
           ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.star)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.star)),
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+              icon: const Icon(Icons.search)),
         ],
       ),
     );
