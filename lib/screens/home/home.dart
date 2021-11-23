@@ -1,8 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:buscavidedoyoutubecombloc/bloc/videos_bloc.dart';
 import 'package:flutter/material.dart';
 
+import '/bloc/videos_bloc.dart';
 import '/delegates/data_search.dart';
+import 'widgets/videos_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Image.asset("assets/image/youtubr.png"),
@@ -30,7 +32,21 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: StreamBuilder(
-        builder: (context, snapshot) => ,
+        stream: BlocProvider.getBloc<VideoBloc>().outVideos,
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                return VideoTile(
+                  video: snapshot.data[index],
+                );
+              },
+            );
+          } else {
+            return Container();
+          }
+        },
       ),
     );
   }

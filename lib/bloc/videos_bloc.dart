@@ -21,7 +21,7 @@ class VideoBloc extends BlocBase {
     _videosController.sink.add(videos);
   }
 
-  String get outVideos => _videosController.stream.toString();
+  Stream get outVideos => _videosController.stream;
   final StreamController<String> _searchController = StreamController<String>();
 
   Sink get isSearch => _searchController.sink;
