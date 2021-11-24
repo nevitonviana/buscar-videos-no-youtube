@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       blocs: [Bloc((i) => VideoBloc())],
-      dependencies: [],
+      dependencies: const [],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

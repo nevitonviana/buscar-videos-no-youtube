@@ -17,7 +17,12 @@ class VideoBloc extends BlocBase {
   }
 
   Future<void> _search(String search) async {
-    videos = await _api.search(search);
+    if (!search.contains("+=")) {
+      _videosController.sink.add([]);
+      videos = await _api.search(search);
+    } else {
+      videos += await _api.nextPage();
+    }
     _videosController.sink.add(videos);
   }
 
