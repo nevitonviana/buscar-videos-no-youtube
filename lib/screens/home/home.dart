@@ -1,11 +1,11 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:buscavidedoyoutubecombloc/bloc/favorite_bloc.dart';
-import 'package:buscavidedoyoutubecombloc/models/video.dart';
-import 'package:buscavidedoyoutubecombloc/screens/favorite/favorite_scree.dart';
 import 'package:flutter/material.dart';
 
+import '/bloc/favorite_bloc.dart';
 import '/bloc/videos_bloc.dart';
-import '/delegates/data_search.dart';
+import '/components/widgets/delegates/data_search.dart';
+import '/models/video.dart';
+import '/screens/favorite/favorite_scree.dart';
 import 'widgets/videos_tile.dart';
 
 class HomeScreen extends StatelessWidget {
