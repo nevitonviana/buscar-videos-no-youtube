@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart';
 
 import 'http_server_interface.dart';
@@ -9,6 +11,7 @@ class HttpClient implements IHttpServer {
 
   @override
   Future<dynamic> get(String url) async {
-    return await client.get(Uri.parse(url));
+    final result = await client.get(Uri.parse(url));
+    return await jsonDecode(result.body);
   }
 }
