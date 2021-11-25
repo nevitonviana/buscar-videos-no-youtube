@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:buscavidedoyoutubecombloc/bloc/favorite_bloc.dart';
 import 'package:buscavidedoyoutubecombloc/models/video.dart';
+import 'package:buscavidedoyoutubecombloc/screens/favorite/favorite_scree.dart';
 import 'package:flutter/material.dart';
 
 import '/bloc/videos_bloc.dart';
@@ -35,7 +36,15 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.star)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const FavoriteScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.star)),
           IconButton(
               onPressed: () async {
                 final result =

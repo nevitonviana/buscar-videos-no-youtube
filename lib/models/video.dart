@@ -22,7 +22,7 @@ class Video {
       return Video(
           id: json['videoId'],
           title: json['title'],
-          thumb: json['channel'],
+          thumb: json['thumb'],
           channel: json['channel']);
     }
   }
