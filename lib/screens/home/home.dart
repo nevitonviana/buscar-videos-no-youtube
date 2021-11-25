@@ -1,4 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:buscavidedoyoutubecombloc/bloc/favorite_bloc.dart';
+import 'package:buscavidedoyoutubecombloc/models/video.dart';
 import 'package:flutter/material.dart';
 
 import '/bloc/videos_bloc.dart';
@@ -15,10 +17,23 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Image.asset("assets/image/youtubr.png"),
+        title: Image.asset(
+          "assets/image/youtube.gif",
+          height: 75,
+          width: 50,
+        ),
         actions: [
-          const Align(
-            child: Text("0"),
+          Align(
+            child: StreamBuilder<Map<String, Video>>(
+              stream: BlocProvider.getBloc<FavoriteBloc>().outFav,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text("${snapshot.data!.length}");
+                } else {
+                  return Container();
+                }
+              },
+            ),
           ),
           IconButton(onPressed: () {}, icon: const Icon(Icons.star)),
           IconButton(
