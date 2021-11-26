@@ -53,7 +53,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 },
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 100,
                       child: Image.network(v.thumb),

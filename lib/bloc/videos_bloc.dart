@@ -2,21 +2,20 @@ import 'dart:async';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
 
-import '/data/http/http_server_interface.dart';
 import '/data/videos/videos_get.dart';
 import '/models/video.dart';
 
 class VideoBloc extends BlocBase {
-  late final ApiYouTube _api;
-  final IHttpServer _httpServer;
-  late List<Video> videos;
-  final StreamController<List<Video>> _videosController =
-      StreamController<List<Video>>();
+  final ApiYouTube _api;
 
-  VideoBloc(this._httpServer) {
-    _api = ApiYouTube(_httpServer);
+  VideoBloc(this._api) {
     _searchController.stream.listen((e) => _search(e));
   }
+
+  late List<Video> videos;
+
+  final StreamController<List<Video>> _videosController =
+      StreamController<List<Video>>();
 
   Future<void> _search(String search) async {
     if (!search.contains("+=")) {
@@ -32,10 +31,4 @@ class VideoBloc extends BlocBase {
   final StreamController<String> _searchController = StreamController<String>();
 
   Sink get isSearch => _searchController.sink;
-
-  @override
-  void dispose() {
-    _videosController.close();
-    _searchController.close();
-  }
 }
