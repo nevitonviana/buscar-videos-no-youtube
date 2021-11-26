@@ -13,12 +13,12 @@ class FavoriteBloc extends BlocBase {
     _getFavorite();
   }
 
+  Map<String, Video> _favorites = {};
+
   Future<void> _getFavorite() async {
     _favorites = await _saveFavorite.get();
     _favoriteController.add(_favorites);
   }
-
-  Map<String, Video> _favorites = {};
 
   final _favoriteController = BehaviorSubject<Map<String, Video>>();
 

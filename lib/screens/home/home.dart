@@ -79,14 +79,25 @@ class HomeScreen extends StatelessWidget {
                 } else {
                   return Align(
                     alignment: Alignment.center,
-                    heightFactor: MediaQuery.of(context).size.height * 0.03,
-                    child: const Text(
-                      "aguardendo um pesquesa",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
-                      textAlign: TextAlign.center,
+                    heightFactor: MediaQuery.of(context).size.height * 0.01,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.search,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                        Text(
+                          "Aguardando sua pesquisa",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   );
                 }
