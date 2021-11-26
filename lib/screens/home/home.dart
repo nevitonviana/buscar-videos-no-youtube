@@ -15,9 +15,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = BlocProvider.getBloc<VideoBloc>();
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white12,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white60,
         title: Image.asset(
           "assets/image/youtube.gif",
           height: 75,

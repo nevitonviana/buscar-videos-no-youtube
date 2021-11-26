@@ -1,7 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:buscavidedoyoutubecombloc/bloc/favorite_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '/bloc/favorite_bloc.dart';
+import '/components/widgets/show_video/show_video.dart';
 import '/models/video.dart';
 
 class VideoTile extends StatelessWidget {
@@ -11,16 +13,44 @@ class VideoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late final YoutubePlayerController controller;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Image.network(
-              video.thumb,
-              fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              controller = YoutubePlayerController(
+                initialVideoId: video.id,
+                flags: const YoutubePlayerFlags(
+                  autoPlay: true,
+                  mute: false,
+                ),
+              );
+              ShowVideo().view(
+                context: context,
+                youtubePlayerController: controller,
+              );
+            },
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Stack(
+                children: [
+                  Image.network(
+                    video.thumb,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                  const Center(
+                    child: Icon(
+                      Icons.play_circle_outline_outlined,
+                      size: 50,
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Row(
