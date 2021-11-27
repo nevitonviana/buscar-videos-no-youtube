@@ -33,6 +33,7 @@
 android
 ios
 lib/core/keys/keys.dart
+test
 
 # Web related
 lib/generated_plugin_registrant.dart
