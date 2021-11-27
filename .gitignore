@@ -30,7 +30,7 @@
 .pub-cache/
 .pub/
 /build
-android/
+/android/
 /ios/
 lib/core/keys/keys.dart
 test/
@@ -49,4 +49,3 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-/android/
