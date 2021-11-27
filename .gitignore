@@ -31,7 +31,7 @@
 .pub/
 /build
 android/
-ios/
+/ios/
 lib/core/keys/keys.dart
 test/
 
